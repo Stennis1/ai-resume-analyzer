@@ -1,127 +1,143 @@
 # AI Resume Analyzer
 
-An AI-powered, full-stack web application that analyzes a resume against a job description and provides a match score, missing skills, and actionable improvement suggestions using a Large Language Model (LLM).
+An AI-powered, full-stack web application that analyzes a resume against a job description and returns a match score, missing skills, and actionable improvement suggestions using a Large Language Model (LLM).
 
-This project demonstrates practical AI integration, backend API design, and modern full-stack deployment focusing on **real-world usefulness rather than academic machine learning**.
+This project focuses on **practical AI integration and real-world system design**, rather than academic machine learning or model training.
 
 ---
 
 ## 🚀 Live Demo
-> _Coming soon_
+
+* **Frontend:** *Coming soon*
+* **Backend API:** *Coming soon*
+
+> Live links will be added once deployment is complete.
 
 ---
 
-## 🧠 What This Project Does
+## 🧠 What This Application Does
 
 Given:
-- A resume (plain text)
-- A job description
+
+* A resume (plain text)
+* A job description
 
 The system returns:
-- A **match score (0–100)**
-- A list of **missing or weak skills**
-- **Improvement suggestions**
-- A concise **final verdict** from a recruiter’s perspective
 
-This mirrors how modern AI tools are used in hiring, HR tech, and internal tooling.
+* A **match score (0–100)**
+* A list of **missing or weak skills**
+* **Actionable improvement suggestions**
+* A concise **final verdict** from a recruiter’s perspective
+
+This mirrors how modern AI-powered tools are used in hiring platforms, HR tech, and internal developer tooling.
 
 ---
 
 ## 🏗️ Architecture Overview
 
 ```
-
 Frontend (Next.js)
-|
-|  HTTP (JSON)
-v
+        |
+        |  HTTP (JSON)
+        v
 Backend API (FastAPI)
-|
-|  Prompt + Context
-v
+        |
+        |  Prompt + Context
+        v
 Large Language Model (LLM)
-
 ```
 
-- The frontend handles user input and displays results
-- The backend validates requests and orchestrates AI inference
-- The AI model performs structured analysis using prompt engineering
+* The frontend handles user input and result presentation
+* The backend validates requests and orchestrates AI inference
+* The AI model performs structured analysis using prompt engineering
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js (App Router)
-- TypeScript
-- Fetch API
+
+* Next.js (App Router)
+* TypeScript
+* Tailwind CSS
+* Fetch API
 
 ### Backend
-- FastAPI
-- Python
-- Pydantic (data validation)
-- Uvicorn (ASGI server)
+
+* FastAPI
+* Python
+* Pydantic (request validation)
+* Uvicorn (ASGI server)
 
 ### AI
-- Large Language Models via API
-- Prompt engineering for structured, deterministic output
+
+* Large Language Models via API
+* Structured prompt engineering with enforced JSON output
 
 ### Deployment
-- Frontend: Vercel
-- Backend: Render
+
+* Frontend: Vercel
+* Backend: Render
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure (Monorepo)
 
 ```
-
 ai-resume-analyzer/
 ├── backend/
 │   ├── main.py
+│   ├── services/
 │   ├── requirements.txt
 │   └── .env.example
 ├── frontend/
-│   └── (Next.js app)
+│   └── (Next.js application)
 ├── README.md
 └── .gitignore
+```
 
-````
+The frontend and backend are developed in a single repository and deployed independently.
 
 ---
 
 ## 🔍 Key Engineering Decisions
 
 ### Why FastAPI?
-- Strong request validation with Pydantic
-- Automatic interactive API documentation
-- Excellent fit for AI and data-driven services
-- Minimal boilerplate with production-level structure
 
-### Why LLM APIs Instead of Training a Model?
-- Reflects how AI is used in real products
-- Faster iteration and lower operational cost
-- Focus on **AI system design**, not model research
+* Strong request validation with Pydantic
+* Automatic interactive API documentation (`/docs`)
+* Excellent fit for AI-driven and data-oriented services
+* Minimal boilerplate with production-grade structure
 
-### Why Structured JSON Output?
-- Predictable frontend rendering
-- Easier future integrations
-- Safer than free-form text generation
+### Why Use LLM APIs Instead of Training a Model?
+
+* Reflects how AI is used in real-world products
+* Faster iteration and significantly lower operational cost
+* Focuses on **AI system design**, not model research
+
+### Why Enforce Structured JSON Output?
+
+* Predictable frontend rendering
+* Easier validation and error handling
+* Prevents malformed or ambiguous AI responses
+* Safer than free-form text generation
 
 ---
 
 ## 📦 API Example
 
 ### Endpoint
+
 `POST /analyze-resume`
 
 ### Request
+
 ```json
 {
   "resume": "Experienced backend engineer with Python and APIs...",
   "job_description": "Looking for a Python developer with cloud experience..."
 }
-````
+```
 
 ### Response
 
@@ -145,7 +161,7 @@ The backend requires environment variables for secure configuration.
 
 Example:
 
-```
+```env
 OPENAI_API_KEY=your_api_key_here
 ```
 
@@ -167,22 +183,22 @@ uvicorn main:app --reload
 
 Visit:
 
-* `http://127.0.0.1:8000` (Homepage - Local Server)
-* `http://127.0.0.1:8000/docs` (API Documentation)
+* `http://127.0.0.1:8000` — API root
+* `http://127.0.0.1:8000/docs` — Interactive API documentation
 
 ---
 
 ## 📈 Future Enhancements (Non-Breaking)
 
-The architecture supports future extensions such as:
+The current architecture supports future extensions such as:
 
 * PDF resume upload
-* Resume history & comparisons
+* Resume history and comparisons
 * Retrieval-Augmented Generation (RAG)
 * Authentication
-* Analytics & feedback tracking
+* Analytics and feedback tracking
 
-These additions will **not require a rewrite** of the core system.
+These additions can be introduced **without rewriting the core system**.
 
 ---
 
