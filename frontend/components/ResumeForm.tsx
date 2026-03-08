@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { analyzeResume } from "../lib/api";
+import type { ResumeAnalysisResponse } from "../lib/types";
 
 export default function ResumeForm() {
   const [resume, setResume] = useState("");
   const [jobDescription, setJobDescription] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ResumeAnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -23,8 +24,12 @@ export default function ResumeForm() {
     try {
       const data = await analyzeResume(resume, jobDescription);
       setResult(data);
-    } catch {
-      setError("Failed to analyze resume. Please try again.");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to analyze resume. Please try again."
+      );
     } finally {
       setLoading(false);
     }

@@ -157,12 +157,14 @@ The frontend and backend are developed in a single repository and deployed indep
 
 ## 🔐 Environment Variables
 
-The backend requires environment variables for secure configuration.
+The backend requires environment variables for secure configuration. Copy
+`backend/.env.example` to `backend/.env` and fill in the values.
 
 Example:
 
 ```env
 OPENAI_API_KEY=your_api_key_here
+FRONTEND_ORIGINS=http://localhost:3000
 ```
 
 Environment files are excluded from version control.
@@ -181,10 +183,19 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+### Frontend
+
+```bash
+cd frontend
+npm install
+NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000 npm run dev
+```
+
 Visit:
 
 * `http://127.0.0.1:8000` — API root
 * `http://127.0.0.1:8000/docs` — Interactive API documentation
+* `http://localhost:3000` — Frontend
 
 ---
 

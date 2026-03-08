@@ -25,6 +25,7 @@ Return ONLY valid JSON with the following keys:
 - missing_skills: Array of strings listing skills required by the job description but missing from the resume
 - suggestions: Array of strings with suggestions to improve the resume
 - verdict: A brief summary verdict of the candidate's suitability for the job 
+Do not include markdown, code fences, or any extra keys.
     """
 
     response = client.chat.completions.create(
