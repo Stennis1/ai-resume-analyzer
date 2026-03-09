@@ -19,7 +19,7 @@ This project focuses on **practical AI integration and real-world system design*
 
 Given:
 
-* A resume (plain text)
+* A resume (plain text, PDF, or Word `.docx`)
 * A job description
 
 The system returns:
@@ -126,9 +126,10 @@ The frontend and backend are developed in a single repository and deployed indep
 
 ## 📦 API Example
 
-### Endpoint
+### Endpoints
 
 `POST /analyze-resume`
+`POST /analyze-resume-upload`
 
 ### Request
 
@@ -138,6 +139,12 @@ The frontend and backend are developed in a single repository and deployed indep
   "job_description": "Looking for a Python developer with cloud experience..."
 }
 ```
+
+For file uploads, send `multipart/form-data` with:
+
+- `job_description`
+- `resume_file` (`.pdf` or `.docx`)
+- optional `resume` text fallback
 
 ### Response
 
